@@ -1,0 +1,85 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+/*
+  !# ADD YOUR CUSTOM BOOTSTRAP VARS HERE !#
+  !# DO NOT ADD CLASSES AND STYLES !#
+  
+  This file is used to quickly import
+  all the variables and the mixins into
+  other modules.
+*/
+
+$gray-200: rgb(228, 228, 228);
+$gray-400: rgb(117, 117, 117);
+$red-200: rgb(255, 228, 228);
+$red-400: rgb(158, 52, 49);
+
+$theme-colors: ();
+$theme-colors: map-merge(
+  (
+    "gray-200": $gray-200,
+    "red-200": $red-200
+  ),
+  $theme-colors
+);
+
+/*
+  !# BREAKPOINTS !#
+
+  Try as much as possible to keep these defaults, we
+  added more breakpoints than usual in Bootstrap.
+  Keeping these defaults will ensure we get better
+  reusability in our components.
+*/
+
+$breakpoint-xs: 0;
+$breakpoint-xsm: 350px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1023px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1440px;
+
+$grid-breakpoints: (
+  xs: $breakpoint-xs,
+  xsm: $breakpoint-xsm,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+);
+
+$spacers: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+  (
+    0: 0,
+    1: 5px,
+    2: 15px,
+    3: 20px,
+    4: 30px,
+    5: 50px,
+    6: 120px,
+  ),
+  $spacers
+);
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+
+@import "node_modules/bootstrap/scss/mixins";
+
+// Export variables you might want to use in your JS here.
+:export {
+  breakpoints: {
+    xs: $breakpoint-xs;
+    xsm: $breakpoint-xsm;
+    sm: $breakpoint-sm;
+    md: $breakpoint-md;
+    lg: $breakpoint-lg;
+    xl: $breakpoint-xl;
+    xxl: $breakpoint-xxl;
+  }
+}
